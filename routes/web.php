@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ShortLinkController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// 1. Route Publik: Ini yang akan diakses saat QR Code dipindai
+Route::get('/go/{short_code}', [ShortLinkController::class, 'redirectUrl']);
+
+// 2. Route Admin: Ini untuk manajemen data (Create, Read, Update)
+// Secara otomatis membuat route: /short_links, /short_links/create, dll.
+Route::resource('short_links', ShortLinkController::class)->except(['show', 'destroy']);

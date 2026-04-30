@@ -8,4 +8,4 @@ Route::get('/go/{short_code}', [ShortLinkController::class, 'redirectUrl']);
 
 // 2. Route Admin: Ini untuk manajemen data (Create, Read, Update)
 // Secara otomatis membuat route: /short_links, /short_links/create, dll.
-Route::resource('short_links', ShortLinkController::class)->except(['show', 'destroy']);
+Route::resource('/', ShortLinkController::class)->except(['show', 'destroy']);
